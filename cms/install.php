@@ -3,6 +3,10 @@ require 'db.inc.php';
 
 $db = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD) or
 	die('Unable to connect. Check connection parameters.');
+	
+$query = "CREATE DATABASE IF NOT EXITS comicbook_fansite";
+
+mysql_query($query, $db) or die(mysql_error($db));
 mysql_select_db(MYSQL_DB, $db) or die(mysql_error($db));
 
 $sql = 'CREATE TABLE IF NOT EXISTS cms_access_levels (
